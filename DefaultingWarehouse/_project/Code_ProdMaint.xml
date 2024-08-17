@@ -1,0 +1,62 @@
+﻿<Graph ClassName="ProdMaint" Source="#CDATA" IsNew="True" FileType="ExistingGraph">
+    <CDATA name="Source"><![CDATA[using PX.Data.ReferentialIntegrity.Attributes;
+using PX.Objects.GL;
+using PX.Objects.CM;
+using PX.Objects.EP;
+using PX.Objects.PM;
+using PX.TM;
+
+
+using System;
+using PX.Data;
+using PX.Objects.IN;
+using PX.Objects.CS;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using PX.Objects.AM.GraphExtensions;
+using PX.Common;
+using PX.Objects.Common;
+using PX.Objects.SO;
+using PX.Objects.AM.Attributes;
+using System.Linq;
+using PX.Objects.AM.CacheExtensions;
+using PX.Objects.PO;
+using PX.Data.BQL.Fluent;
+using PX.Data.BQL;
+using PX.Objects.AR;
+using PX.Objects.CR;
+using PX.Data.WorkflowAPI;
+using PX.Objects;
+using PX.Objects.AM;
+
+namespace PX.Objects.AM
+{
+  public class ProdMaint_Extension : PXGraphExtension<ProdMaint>
+  {
+    #region Event Handlers
+
+    protected void AMProdItem_SiteID_FieldDefaulting(PXCache cache, PXFieldDefaultingEventArgs e)
+    {
+      
+      var row = (AMProdItem)e.Row;
+      e.NewValue = "PFGS";
+    }
+
+    
+    
+    
+  //  [PXDefault(typeof(Search<INSite.siteID, Where<INSite.siteID, Equal<Current<INSite.siteID>>>>), PersistingCheck = PXPersistingCheck.NullOrBlank)]
+            [Site(Visibility=PXUIVisibility.SelectorVisible)]
+          //  [PXForeignReference(typeof(Field<siteID>.IsRelatedTo<INSite.siteID>))]
+    protected virtual void AMProdItem_SiteID_CacheAttached(PXCache cache)
+    {
+    
+    }
+    
+    
+
+    #endregion
+  }
+}]]></CDATA>
+</Graph>
